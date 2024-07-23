@@ -72,9 +72,37 @@ html, body {
     border-radius: 10px;
 }
 
-.input-container {
-    width: 100%;
-    max-width: 400px;
+.input-container input {
+    background-color: var(--light-blue) !important; /* Fondo igual al del cuerpo */
+    color: var(--dark-blue) !important; /* Texto en azul oscuro */
+    border: 2px solid transparent; /* Borde transparente por defecto */
+    transition: border-color 0.5s ease; /* Transición suave del borde */
+}
+
+.input-container input:focus {
+    outline: none;
+    border-color: var(--dark-blue); /* Cambia el color del borde al enfocar */
+}
+
+
+/* Animación para llamar la atención */
+@keyframes blinkBorder {
+    50% {
+        border-color: var(--dark-blue);
+    }
+}
+
+.input-container input {
+    animation: blinkBorder 2s infinite; /* Aplica la animación */
+}
+
+/* Estilo para el placeholder */
+.input-container input::placeholder {
+    color: var(--dark-blue);
+}
+
+.input-container input:focus::placeholder {
+    color: transparent; /* Hace el texto del placeholder transparente al enfocar */
 }
 
 .input-label {

@@ -7,6 +7,7 @@
 }
 
 html, body {
+    position: relative; /* Asegura que el contenedor principal tenga posición relativa */
     height: 100%;
     width: 100%;
     margin: 0;
@@ -32,6 +33,7 @@ html, body {
     overflow: hidden;
     width: 100%;
     max-width: 1200px;
+    position: relative; /* Asegura que el contenedor principal tenga posición relativa */
 }
 
 .left-section, .right-section {
@@ -58,10 +60,13 @@ html, body {
     border-radius: 10px;
 }
 
-.logo {
+/* Clase para el logo en la esquina superior izquierda */
+.logo-top-left {
+    position: absolute;
+    top: 40px;
+    left: 40px;
     width: 120px;
-height: 48px;
-flex-shrink: 0;
+    height: 48px;
 }
 
 .input-container {
@@ -146,27 +151,47 @@ flex-shrink: 0;
     color: var(--text-color);
 }
 
+/* Estilos responsivos */
 @media (max-width: 768px) {
     .encryption-app {
         flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 
     .left-section, .right-section {
-        padding: 20px;
         width: 100%;
+        padding: 20px;
+        border: none;
     }
 
-    .left-section {
-        border-bottom: 1px solid #e0e0e0;
-    }
-
-    .right-section {
-        border-left: none;
-        border-top: 1px solid #e0e0e0;
+    .logo-top-left {
+        position: static;
+        margin: 0 auto 20px auto;
     }
 
     .buttons {
         flex-direction: column;
+        width: 100%;
         gap: 10px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .encryption-app {
+        flex-direction: row;
+    }
+
+    .left-section {
+        flex: 2;
+    }
+
+    .right-section {
+        flex: 1;
+    }
+
+    .logo-top-left {
+        top: 20px;
+        left: 20px;
     }
 }

@@ -7,7 +7,6 @@
 }
 
 html, body {
-    position: relative; /* Asegura que el contenedor principal tenga posición relativa */
     height: 100%;
     width: 100%;
     margin: 0;
@@ -20,20 +19,33 @@ html, body {
 
 #app {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     width: 100%;
     height: 100%;
+    align-items: center;
+    position: relative; /* Asegura que el contenedor principal tenga posición relativa */
+}
+
+.logo-top-left {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 120px;
+    height: 48px;
 }
 
 .encryption-app {
     display: flex;
+    flex-direction: row;
     background-color: var(--light-blue);
     border-radius: 10px;
     overflow: hidden;
     width: 100%;
+
+    
     max-width: 1200px;
     position: relative; /* Asegura que el contenedor principal tenga posición relativa */
+    margin-top: 80px; /* Añade un margen superior para evitar superposición con el logo */
 }
 
 .left-section, .right-section {
@@ -58,15 +70,6 @@ html, body {
     border-left: 1px solid #e0e0e0;
     padding: 40px;
     border-radius: 10px;
-}
-
-/* Clase para el logo en la esquina superior izquierda */
-.logo-top-left {
-    position: absolute;
-    top: 40px;
-    left: 40px;
-    width: 120px;
-    height: 48px;
 }
 
 .input-container {
@@ -166,8 +169,11 @@ html, body {
     }
 
     .logo-top-left {
-        position: static;
-        margin: 0 auto 20px auto;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 80px;
+        height: 32px;
     }
 
     .buttons {
@@ -191,7 +197,9 @@ html, body {
     }
 
     .logo-top-left {
-        top: 20px;
-        left: 20px;
+        top: 30px;
+        left: 30px;
+        width: 100px;
+        height: 40px;
     }
 }

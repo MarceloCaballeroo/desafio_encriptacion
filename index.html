@@ -4,161 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500">
     <title>Página de Encriptación</title>
-    <style>
-        :root {
-            --light-blue: #f3f5fc;
-            --dark-blue: #0a3871;
-            --button-bg: #d8dfe8;
-            --text-color: #000000;
-            --input-bg: #ffffff;
-        }
-
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: var(--light-blue);
-            font-family: 'Inter', sans-serif;
-        }
-
-        .container {
-            width: 1440px;
-            height: 1024px;
-            background-color: var(--input-bg);
-            border-radius: 10px;
-            overflow: hidden;
-            color: var(--text-color);
-            display: flex;
-            
-        }
-
-        .left-panel,
-        .right-panel {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .left-panel {
-            background: var(--light-blue);
-            padding-left: 240px;
-            text-align: left;
-        }
-
-        .right-panel {
-            background-color: var(--input-bg);
-            text-align: center;
-            border-left: 1px solid #e0e0e0;
-            border-radius: 32px;
-            width: 400px;
-            height: 944px;
-            flex-shrink: 0;
-        }
-
-        .input-container {
-            margin-bottom: 20px;
-        }
-
-        .input-container input {
-            width: 577px;
-            height: 48px;
-            padding: 10px;
-            border: none; /* Elimina el borde */
-            outline: none; /* Elimina el contorno al enfocar */
-            border-radius: 5px;
-            font-size: 32px;
-            line-height: 48px;
-            background-color: var(--light-blue);
-            color: var(--dark-blue); /* Asegura que el texto sea --dark-blue */
-        }
-
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 20px;
-
-        }
-
-        .buttons button {
-            width: 120px;
-            height: 48px;
-            border: none;
-            border-radius: 24px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .encrypt-button {
-            background: var(--dark-blue);
-            color: white;
-        }
-
-        .decrypt-button {
-            border: 1px solid var(--dark-blue);
-            background: var(--button-bg);
-            color: var(--text-color);
-        }
-
-        .note {
-            font-size: 14px;
-            color: #666;
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .note svg {
-            width: 16px;
-            height: 16px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/layout/style.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="left-panel">
-            <div class="input-container">
-                <input type="text" id="inputText" placeholder="Ingrese el texto...">
-            </div>
-            <div class="note">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v4m0 0v4m-4 4v4m8-4v4m-4-4v4M4 8h16" />
-                </svg>
-                Solo letras minúsculas y sin acentos
-            </div>
-            <div class="buttons">
-                <button class="encrypt-button" onclick="encryptText()">Encriptar</button>
-                <button class="decrypt-button" onclick="decryptText()">Desencriptar</button>
-            </div>
-        </div>
-        <div class="right-panel">
-            <img src="https://via.placeholder.com/150" alt="Imagen ilustrativa">
-            <p id="outputText">Ningún mensaje fue encontrado</p>
-            <p>Ingresa el texto que desees encriptar o desencriptar.</p>
-        </div>
+    <div id="app">
+        <main class="encryption-app">
+            <object data="/assets/Logo.svg" class="logo"></object>
+            <section class="left-section">
+                <div class="input-container">
+                    <input type="text" id="inputText" placeholder="Ingrese el texto...">
+                    <footer class="note">
+                        <object data="./assets/bi_exclamation-circle-fill.svg" class="icon"></object>
+                        <label for="inputText">Solo letras minúsculas y sin acentos</label>
+                    </footer>
+                    <div class="buttons">
+                        <button class="encrypt-button" onclick="encryptText()">Encriptar</button>
+                        <button class="decrypt-button" onclick="decryptText()">Desencriptar</button>
+                    </div>
+                </div>
+            </section>
+            <section class="right-section">
+                <img src="assets/Muñeco.svg" alt="Imagen ilustrativa" class="illustration">
+                <p id="outputText" class="message">Ningún mensaje fue encontrado</p>
+                <p class="description">Ingresa el texto que desees encriptar o desencriptar.</p>
+            </section>
+        </main>
     </div>
-
-    <script>
-        function encryptText() {
-            const inputText = document.getElementById('inputText').value;
-            const outputText = document.getElementById('outputText');
-            outputText.innerText = inputText ? btoa(inputText) : 'Ningún mensaje fue encontrado';
-        }
-
-        function decryptText() {
-            const inputText = document.getElementById('inputText').value;
-            const outputText = document.getElementById('outputText');
-            outputText.innerText = inputText ? atob(inputText) : 'Ningún mensaje fue encontrado';
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

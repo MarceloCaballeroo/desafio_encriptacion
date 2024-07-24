@@ -14,10 +14,10 @@
             <section class="left-section">
                 <div class="input-container">
                     <textarea id="inputText" placeholder="Ingrese el texto aquí"></textarea>
-                    <footer class="note">
+                    <div class="note">
                         <object data="assets/bi_exclamation-circle-fill.svg" class="icon"></object>
                         <label for="inputText">Solo letras minúsculas y sin acentos</label>
-                    </footer>
+                    </div>
                     <div class="buttons">
                         <button class="encrypt-button" onclick="encryptText()">Encriptar</button>
                         <button class="decrypt-button" onclick="decryptText()">Desencriptar</button>
@@ -31,6 +31,11 @@
             </section>
         </main>
     </div>
+
+    <footer class="footer">
+        <p>Desarrollado por Marcelo Caballero - <a href="https://github.com/MarceloCaballeroo/desafio_encriptacion" target="_blank">Ver en GitHub</a></p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

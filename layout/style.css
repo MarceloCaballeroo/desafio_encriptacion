@@ -172,6 +172,31 @@ html, body {
     color: var(--text-color);
 }
 
+.footer {
+    width: 100%;
+    background-color: var(--light-blue);
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+}
+
+.footer p {
+    margin: 0;
+    color: var(--dark-blue);
+    font-size: 14px;
+}
+
+.footer a {
+    color: var(--dark-blue);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 768px) {
     .encryption-app {
         flex-direction: column;

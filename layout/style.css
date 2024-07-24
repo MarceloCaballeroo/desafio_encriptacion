@@ -23,7 +23,7 @@ html, body {
     width: 100%;
     height: 100%;
     align-items: center;
-    position: relative; /* Asegura que el contenedor principal tenga posición relativa */
+    position: relative;
 }
 
 .logo-top-left {
@@ -41,11 +41,9 @@ html, body {
     border-radius: 10px;
     overflow: hidden;
     width: 100%;
-
-    
     max-width: 1200px;
-    position: relative; /* Asegura que el contenedor principal tenga posición relativa */
-    margin-top: 80px; /* Añade un margen superior para evitar superposición con el logo */
+    position: relative;
+    margin-top: 80px;
 }
 
 .left-section, .right-section {
@@ -61,6 +59,8 @@ html, body {
     background: var(--light-blue);
     padding: 40px;
     text-align: left;
+    position: relative;
+    height: calc(100vh - 120px);
 }
 
 .right-section {
@@ -72,57 +72,42 @@ html, body {
     border-radius: 10px;
 }
 
-.input-container input {
-    background-color: var(--light-blue) !important; /* Fondo igual al del cuerpo */
-    color: var(--dark-blue) !important; /* Texto en azul oscuro */
-    border: 2px solid transparent; /* Borde transparente por defecto */
-    transition: border-color 0.5s ease; /* Transición suave del borde */
-}
-
-.input-container input:focus {
-    outline: none;
-    border-color: var(--dark-blue); /* Cambia el color del borde al enfocar */
-}
-
-
-/* Animación para llamar la atención */
-@keyframes blinkBorder {
-    50% {
-        border-color: var(--dark-blue);
-    }
-}
-
-.input-container input {
-    animation: blinkBorder 2s infinite; /* Aplica la animación */
-}
-
-/* Estilo para el placeholder */
-.input-container input::placeholder {
-    color: var(--dark-blue);
-}
-
-.input-container input:focus::placeholder {
-    color: transparent; /* Hace el texto del placeholder transparente al enfocar */
-}
-
-.input-label {
-    font-size: 24px;
-    color: var(--dark-blue);
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.input-container input {
+.input-container {
     width: 100%;
-    padding: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-container textarea {
+    width: 100%;
+    height: 50%; /* Ocupa todo el espacio disponible */
+    padding: 20px;
     border: none;
     outline: none;
     border-radius: 5px;
-    font-size: 18px;
-    background-color: var(--input-bg);
+    font-size: 24px;
+    background-color: transparent;
     color: var(--dark-blue);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    resize: none; /* Deshabilita el redimensionamiento */
+    transition: border-color 0.5s ease;
+    animation: blinkBorder 2s infinite;
+}
+
+.input-container textarea:focus {
+    border-color: var(--dark-blue);
+    outline: none;
+}
+
+.input-container textarea::placeholder {
+    color: var(--dark-blue);
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.input-container textarea:focus::placeholder {
+    opacity: 0;
 }
 
 .note {
@@ -131,7 +116,9 @@ html, body {
     gap: 5px;
     font-size: 14px;
     color: #666;
+    margin-top: 20px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .icon {
@@ -143,6 +130,9 @@ html, body {
     display: flex;
     gap: 10px;
     justify-content: center;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
 }
 
 .buttons button {
@@ -182,7 +172,6 @@ html, body {
     color: var(--text-color);
 }
 
-/* Estilos responsivos */
 @media (max-width: 768px) {
     .encryption-app {
         flex-direction: column;
@@ -196,18 +185,29 @@ html, body {
         border: none;
     }
 
+    .left-section {
+        height: auto; /* Ajusta la altura para que se ajuste automáticamente al contenido */
+    }
+
     .logo-top-left {
-        position: absolute;
         top: 20px;
         left: 20px;
         width: 80px;
         height: 32px;
     }
 
+    .input-container {
+        height: auto; /* Ajusta la altura automáticamente en la vista móvil */
+    }
+
+    .input-container textarea {
+        height: 15vh; /* Ocupa el 50% de la altura de la ventana gráfica */
+    }
+
     .buttons {
         flex-direction: column;
         width: 100%;
-        gap: 10px;
+        gap: 20px; /* Aumenta el espacio entre los botones y otros elementos */
     }
 }
 
@@ -229,5 +229,12 @@ html, body {
         left: 30px;
         width: 100px;
         height: 40px;
+    }
+}
+
+/* Animación para el borde */
+@keyframes blinkBorder {
+    50% {
+        border-color: var(--dark-blue);
     }
 }

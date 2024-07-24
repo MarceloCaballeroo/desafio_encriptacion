@@ -67,7 +67,6 @@ html, body {
     flex: 2;
     background-color: var(--input-bg);
     text-align: center;
-    border-left: 1px solid #e0e0e0;
     padding: 40px;
     border-radius: 10px;
 }
@@ -82,7 +81,7 @@ html, body {
 
 .input-container textarea {
     width: 100%;
-    height: 50%; /* Ocupa todo el espacio disponible */
+    height: 50%;
     padding: 20px;
     border: none;
     outline: none;
@@ -90,7 +89,7 @@ html, body {
     font-size: 24px;
     background-color: transparent;
     color: var(--dark-blue);
-    resize: none; /* Deshabilita el redimensionamiento */
+    resize: none; 
     transition: border-color 0.5s ease;
     animation: blinkBorder 2s infinite;
 }
@@ -208,6 +207,19 @@ html, body {
     text-decoration: underline;
 }
 
+.theme-toggle-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+
 @media (max-width: 768px) {
     .encryption-app {
         flex-direction: column;
@@ -273,4 +285,65 @@ html, body {
     50% {
         border-color: var(--dark-blue);
     }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+body.dark-mode {
+    background-color: #212121;
+    color: #fff;
+}
+
+body.dark-mode .encryption-app {
+    background-color: #212121;
+}
+
+body.dark-mode .left-section {
+    background-color: #212121;
+}
+
+body.dark-mode .right-section {
+    background-color: #2f2f2f;
+}
+
+
+body.dark-mode textarea {
+    color: var(--input-bg); /* Cambia el color de texto en el modo oscuro */ /* Asegúrate de que el fondo contraste con el texto blanco */
+}
+
+body.dark-mode textarea::placeholder {
+    color: var(--input-bg);
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+body.dark-mode .theme-toggle-button img {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+body.dark-mode .decrypt-button {
+    background: #555;
+    border-color: #555;
+    color: white;
+}
+
+body.dark-mode .message {
+    color: white;
+}
+
+body.dark-mode .footer {
+    background-color: #212121;
+    color: white;
+}
+
+body.dark-mode .footer a {
+    color: #ddd;
 }

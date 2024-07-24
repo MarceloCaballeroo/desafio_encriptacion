@@ -2,8 +2,11 @@ window.encryptText = function() {
     const inputText = document.getElementById('inputText').value;
     const outputText = document.getElementById('outputText');
 
-    if (/[^a-z\s]/.test(inputText)) {
-        outputText.innerText = 'Solo letras minúsculas y sin acentos';
+    // Validación para asegurarse de que no hay letras mayúsculas ni letras con tildes
+    if (/[A-ZÁÉÍÓÚáéíóú]/.test(inputText)) {
+        document.querySelector('.right-section').innerHTML = `
+            <p id="outputText" class="message">Solo letras minúsculas y sin acentos</p>
+        `;
         return;
     }
 
@@ -23,7 +26,8 @@ window.encryptText = function() {
 window.decryptText = function() {
     const inputText = document.getElementById('inputText').value;
 
-    if (/[^a-z\s]/.test(inputText)) {
+    // Validación para asegurarse de que no hay letras mayúsculas ni letras con tildes
+    if (/[A-ZÁÉÍÓÚáéíóú]/.test(inputText)) {
         document.querySelector('.right-section').innerHTML = `
             <p id="outputText" class="message">Solo letras minúsculas y sin acentos</p>
         `;
